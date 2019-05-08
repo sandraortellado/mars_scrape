@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .col-8{
+            width:70%;
+            align-content: flex-start;
+        }
+        .col-4{
+        position: absolute;
+        right: 50px;
+        top: 400px;
+        width: 300px;
+        border: 3px solid black;
+        padding:10px;
+        }
+        .right{
+        position: absolute;
+        right: 500px;
+        top: 1000px;
+        }
+        .under{
+            position: absolute;
+            top:1540px;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <h2>Latest Mars News</h2>
+    {{latest_data['news title']}}
+    <br/>
+    {{latest_data['news lede']}}
+    <div class="col-8">
+    <h2>Featured Mars Image</h2>
+      <a href="{{latest_data['featured image url']}}"><img src="{{latest_data['featured image url']}}" alt="featured image" height=500 width=800></a>
+      </div>
+    <div class="col-4">
+        <h3>Current Weather on Mars</h3> <h4><a href='https://twitter.com/MarsWxReport?ref_src=twsrc%5Eappleosx%7Ctwcamp%5Esafari%7Ctwgr%5Eprofile'>@MarsWxReport</a></h4>
+    <p>{{latest_data['mars weather tweet']}}</p>
+    <h3>Mars Facts</h3>
+    {{ latest_data['facts table (html)']|safe }}
+      </div>
+    <h3>Mars Hemispheres</h3>
+      <h4>{{latest_data['hemisphere image urls'][0]['title']}}</h4>
+      <a href="{{latest_data['hemisphere image urls'][0]['img_url']}}"><img src="{{latest_data['hemisphere image urls'][0]['img_url']}}" height=500 width=500></a>
+      <h4 class = 'right'>{{latest_data['hemisphere image urls'][1]['title']}}</h4>
+      <a href="{{latest_data['hemisphere image urls'][1]['img_url']}}"><img src="{{latest_data['hemisphere image urls'][1]['img_url']}}" height=500 width=500></a>
+      <h4>{{latest_data['hemisphere image urls'][2]['title']}}</h4>
+      <a href="{{latest_data['hemisphere image urls'][2]['img_url']}}"><img src="{{latest_data['hemisphere image urls'][2]['img_url']}}" height=500 width=500></a>
+      <h4 class = 'right under'>{{latest_data['hemisphere image urls'][3]['title']}}</h4>
+      <a href="{{latest_data['hemisphere image urls'][3]['img_url']}}"><img src="{{latest_data['hemisphere image urls'][3]['img_url']}}" height=500 width=500></a>
+  </div>
+</body>
+
+</html>
