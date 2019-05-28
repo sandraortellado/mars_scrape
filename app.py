@@ -5,7 +5,7 @@ import scrape_mars
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-mongo = PyMongo(app, uri="mongodb://localhost:27017/weather_app")
+mongo = PyMongo(app, url="mongodb://localhost:27017/weather_app")
 
 @app.route("/")
 def home():
